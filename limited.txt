@@ -1,0 +1,36 @@
+function [bse] = limited(bse)
+sequ = bse;
+n = length(sequ);
+for i =1:1:n
+    if(sequ(i)>=n)
+        sequ(i) = n;
+    end
+    if(sequ(i)<=1)
+        sequ(i) = 1;
+    end
+end
+x2 = round(sequ);
+seq = x2;
+n = length(seq);
+for i =1:n
+    rep = 1;
+    for j= 1:n
+        if(seq(j) == i)
+            rep = 0;
+        else
+            rep = rep*2;
+        end
+    end
+    x =rep;
+    if (x == power(2,n))
+        for l = 1:n-1
+            for k = l+1:n
+                if(seq(l) == seq(k))
+                    seq(k) = i;
+                end
+            end
+        end
+    end
+end
+bse = seq;
+end
